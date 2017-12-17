@@ -389,3 +389,32 @@ function getMiddle(s)
 function printArray(array){
   return array.join(',');
 }
+
+
+// Basic Mathematical Operations
+// JavaScript:
+
+function basicOp(operation, value1, value2)
+{
+  switch (operation) {
+  case '+':
+    return value1 + value2;
+    break;
+  case '-':
+    return value1 - value2;
+    break;
+  case '*':
+    return value1 * value2;
+    break;
+  case '/':
+    return value1 / value2;
+    break;
+  }
+}
+
+// Opposite number
+// JavaScript:
+
+function opposite(number) {
+  return -number;
+}
