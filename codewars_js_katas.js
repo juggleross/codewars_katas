@@ -134,3 +134,258 @@ function getParticipants(handshakes){
     }
   }
 }
+
+// Mutual Recursion
+// JavaScript:
+
+function F(n) {
+  return n === 0 ? 1 : n - M(F(n-1));
+}
+
+function M(n) { 
+  return n === 0 ? 0 : n - F(M(n-1));
+}
+
+// Array Deep Count
+// JavaScript:
+
+function deepCount(a){
+  let final_count = a.length;
+  a.forEach(function(item, i, arr) {
+    if(is_array(item)) {
+      final_count += deepCount(item);
+    }
+  });
+  
+  return final_count;
+}
+
+function is_array(item) {
+  return item instanceof Array;
+}
+
+// Calculating with Functions
+// JavaScript:
+
+function zero(operation) {
+  return result(0, operation);
+}
+function one(operation) {
+  return result(1, operation);
+}
+function two(operation) {
+  return result(2, operation);
+}
+function three(operation) {
+  return result(3, operation);
+}
+function four(operation) {
+  return result(4, operation);
+}
+function five(operation) {
+  return result(5, operation);
+}
+function six(operation) {
+  return result(6, operation);
+}
+function seven(operation) {
+  return result(7, operation);
+}
+function eight(operation) {
+  return result(8, operation);
+}
+function nine(operation) {
+  return result(9, operation);
+}
+
+function plus(second_arg) {
+  return function(first_arg) {
+    return first_arg + second_arg;
+  }
+}
+function minus(second_arg) {
+  return function(first_arg) {
+    return first_arg - second_arg;
+  }
+}
+function times(second_arg) {
+  return function(first_arg) {
+    return first_arg * second_arg;
+  }
+}
+function dividedBy(second_arg) {
+  return function(first_arg) {
+    return first_arg / second_arg;
+  }
+}
+
+function result(num, operation) {
+  if(!operation) return num;
+  return operation(num);
+}
+
+// Transportation on vacation
+// JavaScript:
+
+function rentalCarCost(d) {
+  if( d < 3) {
+    return d * 40;
+  } else if( d >= 3 && d < 7) {
+    return d * 40 - 20;
+  } else {
+    return d * 40 - 50;
+  }
+}
+
+// A Chain adding function
+// JavaScript:
+
+function add(n){
+  function myFunction(x) { return add(n + x); }
+  myFunction.toString = () => { return n };
+  return myFunction;
+}
+
+// Can you keep a secret?
+// JavaScript:
+
+function createSecretHolder(secret) {
+  return {
+    getSecret: function() {
+      return secret;
+    },
+    setSecret: function(value) {
+      secret = value;
+    }
+  }
+}
+
+// A function within a function
+// JavaScript:
+
+// return a function that returns n
+function always (n) {
+  return function() {
+    return n;
+  }
+}
+
+// Closures and Scopes
+// JavaScript:
+
+function createFunctions(n) {
+  var callbacks = [];
+
+  for (let i=0; i<n; i++) {
+    callbacks.push(function() {
+      return i;
+    });
+  }
+  
+  return callbacks;
+}
+
+// Prefill an Array
+// JavaScript:
+
+function prefill(n, v) {
+  let number = parseInt(n);
+  if(isNaN(number) || n < 0 || n % 1 !== 0) throw new TypeError(n + " is invalid");
+  if(n == 0) return [];
+  
+  let result = new Array(n).fill('')
+
+  result = result.map((val) => { return v; });
+
+  return result;
+}
+
+// Partition On
+// JavaScript:
+
+function partitionOn(pred, items) {
+  let refused_arr = [];
+  let accepted_arr = [];
+
+  accepted_arr = items.filter(pred);
+
+  refused_arr = items.filter(function(item){
+    return accepted_arr.indexOf(item) === -1;
+  });
+  
+  items.length = 0;
+  [].push.apply(items, refused_arr);
+  [].push.apply(items, accepted_arr);
+  
+  return refused_arr.length;
+}
+
+// Head, Tail, Init and Last
+// JavaScript:
+
+function head(arr) {
+  return arr[0];
+}
+
+function tail(arr) {
+  return arr.slice(1);
+}
+
+function init(arr) {
+  return arr.slice(0, arr.length-1);
+}
+
+function last(arr) {
+  return arr[arr.length-1];
+}
+
+// Is a number prime?
+// JavaScript:
+
+
+function isPrime(num) {
+  if(num <= 1) return false;
+
+  for(var i = 2; i < num; i++)
+    if(num % i === 0) return false;
+
+  return true;
+}
+
+// Word Count
+// JavaScript:
+
+function countWords(str) {
+  str = str.replace(/\s+/g, ' ').trim()
+  
+  if(str.length === 0) {
+    return 0;
+  }
+  return str.split(' ').length
+}
+
+
+// Get the Middle Character
+// JavaScript:
+
+function getMiddle(s)
+{
+  var length = s.length / 2;
+  var odd_length =  Math.trunc(length);
+  var even_length =  Math.trunc(length);
+  var str_arr = s.split('');
+  
+  if(s.length % 2 === 0) {
+    return str_arr[even_length - 1] + str_arr[even_length]
+  } else {
+    return str_arr[odd_length]
+  }
+}
+
+
+// Printing Array elements with Comma delimiters
+// JavaScript:
+
+function printArray(array){
+  return array.join(',');
+}
